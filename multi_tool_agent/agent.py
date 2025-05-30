@@ -2,6 +2,7 @@ import datetime
 from zoneinfo import ZoneInfo
 from google.adk.agents import Agent
 from google.generativeai import GenerativeModel
+from src.tools.code_review import run_code_review
 
 def get_weather(city: str) -> dict:
     """Retrieves the current weather report for a specified city.
@@ -54,29 +55,29 @@ def get_current_time(city: str) -> dict:
     )
     return {"status": "success", "report": report}
 
-def run_code_review(code_snippet: str) -> dict:
-    """Runs a code review using Gemini and returns feedback."""
-    try:
-        model = GenerativeModel("gemini-1.5-flash-latest")
+# def run_code_review(code_snippet: str) -> dict:
+#     """Runs a code review using Gemini and returns feedback."""
+#     try:
+#         model = GenerativeModel("gemini-1.5-flash-latest")
 
-        # Prepare the prompt for code review
-        prompt = f"""
-You are a Python code review expert. Please review the following code:
-```python
-{code_snippet}
-Check for:
-- Style issues (PEP8)
-- Potential bugs
-- Readability improvements
-- Suggestions for optimization or best practices
+#         # Prepare the prompt for code review
+#         prompt = f"""
+# You are a Python code review expert. Please review the following code:
+# ```python
+# {code_snippet}
+# Check for:
+# - Style issues (PEP8)
+# - Potential bugs
+# - Readability improvements
+# - Suggestions for optimization or best practices
 
-Provide clear, concise feedback.
-"""
-        # Generate content using the model
-        response = model.generate_content(prompt)
-        return {"status": "success", "review": response.text}
-    except Exception as e:
-        return {"status": "error", "error_message": str(e)}
+# Provide clear, concise feedback.
+# """
+#         # Generate content using the model
+#         response = model.generate_content(prompt)
+#         return {"status": "success", "review": response.text}
+#     except Exception as e:
+#         return {"status": "error", "error_message": str(e)}
 
 
 

@@ -27,7 +27,7 @@ async def main():
 You are a Python code review expert. Please review the following code:
 ```python
 {code_snippet}
-Check for:
+Check for: 
 Style issues (PEP8)
 Potential bugs
 Readability improvements
