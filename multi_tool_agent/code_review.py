@@ -1,5 +1,5 @@
 from google.generativeai import GenerativeModel
-from src.tools.linter_tool import run_linter
+from multi_tool_agent.linter_tool import run_linter
 import ast
 
 def run_code_review(code_snippet: str) -> dict:
